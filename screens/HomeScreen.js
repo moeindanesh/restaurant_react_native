@@ -10,7 +10,8 @@ import SearchInput from '../components/SearchInput';
 import ResultsList from '../components/ResultsList';
 import CategoryList from '../components/CategoryList';
 
-const HomeScreen = ({openDrawer}) => {
+const HomeScreen = props => {
+  console.disableYellowBox = true;
   const {searchApi, results, visible, setVisible, status} = useResults();
   const [term, setTerm] = useState('');
   const [pageStatus, setPageStatus] = useState(false);
@@ -29,7 +30,7 @@ const HomeScreen = ({openDrawer}) => {
       <Toolbar
         centerElement="با ما فود"
         leftElement="menu"
-        onLeftElementPress={() => openDrawer()}
+        onLeftElementPress={() => props.navigation.toggleDrawer()}
         searchable={{
           autoFocus: true,
           placeholder: 'چی میل داری؟',

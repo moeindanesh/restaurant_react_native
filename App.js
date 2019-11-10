@@ -7,20 +7,33 @@
  */
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
+import {createDrawerNavigator} from 'react-navigation-drawer';
 
 import HomeScreen from './screens/HomeScreen';
 import ResultsShowScreen from './screens/ResultsShowScreen';
-import MainScreen from './screens/MainScreen';
 
-const Navigator = createStackNavigator(
+const HomeScreenNavigator = createStackNavigator(
   {
     HomeScreen,
     ResultsShowScreen,
-    MainScreen,
+  },
+  {
+    headerMode: 'none',
+  },
+);
+
+const Navigator = createDrawerNavigator(
+  {
+    HomeScreen: {
+      screen: HomeScreenNavigator,
+      navigationOptions: {
+        drawerLabel: 'HomeScreen',
+      },
+    },
   },
   {
     initialRouteName: 'HomeScreen',
-    headerMode: 'none',
+    backBehavior: 'initialRoute',
   },
 );
 
