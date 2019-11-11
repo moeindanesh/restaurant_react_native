@@ -6,9 +6,9 @@ import posed from 'react-native-pose';
 
 import useResults from '../hooks/useResults';
 
-import SearchInput from '../components/SearchInput';
 import ResultsList from '../components/ResultsList';
 import CategoryList from '../components/CategoryList';
+import User from '../components/User';
 
 const HomeScreen = props => {
   console.disableYellowBox = true;
@@ -28,16 +28,15 @@ const HomeScreen = props => {
   return (
     <>
       <Toolbar
+        rightElement={<User />}
         centerElement="با ما فود"
         leftElement="menu"
         onLeftElementPress={() => props.navigation.toggleDrawer()}
-        searchable={{
-          autoFocus: true,
-          placeholder: 'چی میل داری؟',
-        }}
         style={{
           container: styles.headerContainer,
           titleText: styles.headerTitle,
+          leftElement: styles.headerLeftElement,
+          rightElementContainer: styles.headerRightElement,
         }}
       />
       <Loading
@@ -98,12 +97,22 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   headerContainer: {
+    paddingVertical: 10,
     flexDirection: 'row',
-    backgroundColor: '#7BCF53',
+    backgroundColor: '#eee',
+    elevation: 2,
+  },
+  headerRightElement: {
+    marginHorizontal: 10,
   },
   headerTitle: {
+    marginHorizontal: '35%',
     fontFamily: 'Dana-FaNum-Regular',
     fontSize: 24,
+    color: '#000',
+  },
+  headerLeftElement: {
+    color: '#111',
   },
   loading: {
     width: '100%',

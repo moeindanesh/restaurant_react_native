@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   slideShowContainer: {
-    height: 300,
+    height: 314,
   },
   sliderButtons: {
     width: '100%',
